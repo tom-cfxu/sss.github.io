@@ -121,6 +121,7 @@
             padding: 0 5px;
             font-weight: bold;
             text-align: center;
+            animation: 2s linear  1s infinite  scale ;
         }
         
         .divider{
@@ -140,6 +141,7 @@
             font-size: 10px;
             background-color: #d6693a;
             color:white;
+            margin-bottom: 2rem;
             text-align: center;
         }
         
@@ -211,7 +213,6 @@
           el: '#app',
           data: {
             studentInfo: {},
-            TIME:'YYYYMMDD',
             Date:'YYYY年MM月DD日',
             Hour:'00',
             Minute:'00',
@@ -250,28 +251,27 @@
               }
           },
           created:function (){
-                // var pwd =prompt('请输入密码');
-                // if(pwd!='123'){
-                //     window.close();
-                //     return;
-                // }
+                var pwd =prompt('请输入密码');
+                if(pwd!='123'){
+                    window.close();
+                    return;
+                }
 
 
-              this.studentInfo=this.getStudentInfo();
-              this.Hour=this.getHour();
-              this.Minute=this.getMinute();
-              this.Second=this.getSecond();
-                    
-              this.Date=this.getDate();
-              this.Millisecond=this.getMillisecond();
-            setInterval(()=>{
+                this.studentInfo=this.getStudentInfo();
+                this.Hour=this.getHour();
+                this.Minute=this.getMinute();
+                this.Second=this.getSecond();
+                this.Date=this.getDate();
                 this.Millisecond=this.getMillisecond();
-            },1)
-            setInterval(()=>{
-              this.Hour=this.getHour();
-              this.Minute=this.getMinute();
-              this.Second=this.getSecond();
-            },1000)
+                // setInterval(()=>{
+                //     this.Millisecond=this.getMillisecond();
+                // },1)
+                setInterval(()=>{
+                this.Hour=this.getHour();
+                this.Minute=this.getMinute();
+                this.Second=this.getSecond();
+                },1000)
           }
           
         })
