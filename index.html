@@ -121,9 +121,20 @@
             padding: 0 5px;
             font-weight: bold;
             text-align: center;
-            animation: 2s linear  1s infinite  scale ;
+            animation: 1s linear infinite  twink ;
         }
         
+        @keyframes twink {
+            0%{
+                opacity: 1;
+            }
+            50%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
         .divider{
             text-align: center;
             margin: 1rem 0;
@@ -144,11 +155,14 @@
             margin-bottom: 2rem;
             text-align: center;
         }
+        .hidden{
+            display: none;
+        }
         
     </style>
 </head>
 <body>
-    <div id="app" class="container" v-if="isView" >
+    <div id="app" class="container" v-bind:class="{hidden:!isView}" >
         <!-- 头部 -->
         <div class="head">
            <img/>
@@ -254,24 +268,26 @@
           created:function (){
                 var pwd =prompt('请输入密码');
                 if(pwd!='123'){
-                    window.close();
+                    this.isView=false;
+                    // window.close();
+                    wx.closeWindow();
                     return;
                 }
                 this.isView=true;
-
+                // this.isView=true;
                 this.studentInfo=this.getStudentInfo();
                 this.Hour=this.getHour();
                 this.Minute=this.getMinute();
                 this.Second=this.getSecond();
                 this.Date=this.getDate();
                 this.Millisecond=this.getMillisecond();
-                // setInterval(()=>{
-                //     this.Millisecond=this.getMillisecond();
-                // },1)
                 setInterval(()=>{
-                this.Hour=this.getHour();
-                this.Minute=this.getMinute();
-                this.Second=this.getSecond();
+                    this.Millisecond=this.getMillisecond();
+                },1)
+                setInterval(()=>{
+                    this.Hour=this.getHour();
+                    this.Minute=this.getMinute();
+                    this.Second=this.getSecond();
                 },1000)
           }
           
