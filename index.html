@@ -54,6 +54,7 @@
         }
         .studentInfo > .info p.text-color{
             color: #d06837;
+            font-family: '华文仿宋';
         }
         .studentInfo > .university-logo{
             flex: 1;
@@ -64,75 +65,79 @@
             align-items: start;
         }
         .studentInfo >.university-logo img{
-            width: 80%;
-            content: url(logo.png);;
+            height:100%;
+            content: url(logo.jpg);;
+        }
+        .info-schoolGate{
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .info-schoolGate>span{
+            display: inline-block;
+            height: 2rem;
+            line-height: 2rem;
+            font-size: 1.5rem;
+            box-sizing: content-box;
+            font-family: '华文仿宋';
+            padding: 5px 5px;
+            background-color: #d87136;
+            color: white;
+            box-shadow: 0px 2px 15px 0px #616060;
+            animation: 2s linear  1s infinite  scale ;
+        }
+        /* 放大缩小动画 */
+        @keyframes scale {
+            0%{
+                transform: scale(1);
+            }
+            50%{
+                transform: scale(0.8);
+
+            }
+            100%{
+                transform: scale(1);
+
+            }
         }
         .time{
             width: 100%;
-            flex: 1;
-            /* background-color: #f1b7ee; */
-        }
-        .time > .now{
             display: flex;
-            padding: 10% 5%;
-            justify-content: center;
-            font-weight: bold;
-            align-items: center;
-        }
-        .time > .now >.block{
-            display: flex;
-            padding: 3px 2px;
-            background-color: #e0a43e;
-            border-radius: 5px;
-            box-shadow:0px 5px 0px 0px #c36238;
-        }
-        .time > .now >.space-block{
-            width: 1.5rem;
-            text-align: center;
-            font-size: 1rem;
-        }
-        .time > .now >.block> .number{
-            width: 2rem;
-            font-size: 3rem;
-            height: 3.5rem;
-            line-height: 3.5rem;
-            color: #d06837;
-            text-align: center;
-            background-color: white;
-            border-radius: 5px;
-        }
-        .time > .now >.block> .space{
-            width: 0.2rem;
-            
-        }
-        .time >.divider{
-            display: flex;
-            justify-content: center;
-            font-size: 1.1rem;
-            color: #d06837;
-        }
-        .time >.slogan{
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-size: 1.1rem;
-            color: #d06837;
+            margin-top: 1.5rem;
         }
-        .time >.slogan>.ch{
-            font-size: 1.5rem;
+        .time>.timebox{
+            border-radius: 3px;
+            background-color: #e8d7cd;
+            font-size: 2.5rem;
+            border: 1px solid #c5b09e;
+            color: #c8764f;
             font-weight: bold;
+            padding: 0 5px;
+            font-family: '黑体';
+        }
+        .time>.space{
+            padding: 0 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .divider{
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 10px;
+            color: #d06837;
         }
 
         .foot{
             width: 100%;
             height: 5%;
-            /* background-color: #ccf1b7; */
         }
         .foot> .copyRight{
-            height: 2rem;
-            line-height: 2rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            font-size: 10px;
             background-color: #d6693a;
             color:white;
             text-align: center;
@@ -162,47 +167,42 @@
                 <img />
             </div>
         </div>
-        <!-- 时间+宣传语 -->
+        <!-- 进校信息 -->
+        <div class="info-schoolGate">
+            <span>
+                旗山校区-南门-入方向
+            </span>
+        </div>
+        <!-- 时间 -->
         <div class="time">
-            <div class="now">
-                <div class="block">
-                    <div class="number">{{TIME[0]}}</div>
-                    <div class="space"></div>
-                    <div class="number">{{TIME[1]}}</div>
-                </div> 
-                <div class="space-block">:</div>
-                <div class="block">
-                    <div class="number">{{TIME[2]}}</div>
-                    <div class="space"></div>
-                    <div class="number">{{TIME[3]}}</div>
-                </div>
-                <div class="space-block">:</div>
-                <div class="block">
-                    <div class="number">{{TIME[4]}}</div>
-                    <div class="space"></div>
-                    <div class="number">{{TIME[5]}}</div>
-                </div>
-                <div class="space-block">:</div>
-                <div class="block">
-                    <div class="number">{{Millisecond[0]}}</div>
-                    <div class="space"></div>
-                    <div class="number">{{Millisecond[1]}}</div>
-                    <div class="space"></div>
-                    <div class="number">{{Millisecond[2]}}</div>
-                </div>
+            <div class="hour timebox"> <!-- 小时 -->
+                {{Hour}}
             </div>
-            <div class="divider">
-                ——————{{Date}}——————
+            
+            <div class="space">:</div><!-- 冒号 -->
+
+            <div class="minute timebox"> <!-- 分钟 -->
+                {{Minute}}
             </div>
-            <div class="slogan">
-                <p class="ch">校园安全，共同守护</p>
-                <p class="en">Campus security responsibility</p>
+            <div class="space">:</div><!-- 冒号 -->
+
+            <div class="second timebox"> <!-- 秒 -->
+                {{Second}}
             </div>
+            <div class="space">:</div><!-- 冒号 -->
+            
+            <div class="millisecond timebox"> <!-- 毫秒 -->
+                {{Millisecond}}
+            </div>
+        </div>
+        <!-- 分割线时间 -->
+        <div class="divider">
+            ——————{{Date}}——————
         </div>
         <!-- 版权信息 -->
         <div class="foot">
             <div class="copyRight">
-                &copy;2016-2020 by www.cezone.cn All rights reserved.
+                技术支持:福州校企邦网络科技有限公司
             </div>
         </div>
     </div>
@@ -212,8 +212,11 @@
           data: {
             studentInfo: {},
             TIME:'YYYYMMDD',
-            Millisecond:'SSS',
             Date:'YYYY年MM月DD日',
+            Hour:'00',
+            Minute:'00',
+            Second:'00',
+            Millisecond:'SSS',
           },
           methods: {
               getThisYear:function(){
@@ -221,6 +224,15 @@
               },
               getTime:function(){
                 return moment().format('HHmmss');
+              },
+              getHour:function(){
+                return moment().format('HH');
+              },
+              getMinute:function(){
+                return moment().format('mm');
+              },
+              getSecond:function(){
+                return moment().format('ss');
               },
               getDate:function(){
                 return moment().format('YYYY年MM月DD日');
@@ -233,21 +245,32 @@
                     'Name': Mock.Random.cname(),
                     'No': (/QSZ(2019|2020|2021)(0[1-9]|[1-9][0-9])(0[1-9]|[1-9][0-9])/),
                     'Dept':  /数学与信息学院/,
-                    'Time': `${moment().format('YYYY-MM-DD')}止`,
+                    'Time': `${moment().format('YYYY-MM-DD 23:59')}止`,
                 })
               }
           },
           created:function (){
+                // var pwd =prompt('请输入密码');
+                // if(pwd!='123'){
+                //     window.close();
+                //     return;
+                // }
+
+
               this.studentInfo=this.getStudentInfo();
-              this.TIME=this.getTime();
+              this.Hour=this.getHour();
+              this.Minute=this.getMinute();
+              this.Second=this.getSecond();
+                    
               this.Date=this.getDate();
               this.Millisecond=this.getMillisecond();
-            //   console.log(this.TIME)
             setInterval(()=>{
                 this.Millisecond=this.getMillisecond();
             },1)
             setInterval(()=>{
-                this.TIME=this.getTime();
+              this.Hour=this.getHour();
+              this.Minute=this.getMinute();
+              this.Second=this.getSecond();
             },1000)
           }
           
