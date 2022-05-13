@@ -56,17 +56,21 @@
             color: #d06837;
             font-family: '华文仿宋';
         }
-        .studentInfo > .university-logo{
-            flex: 1;
-        }
         .studentInfo >.university-logo{
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: start;
+            flex-direction: column;
         }
-        .studentInfo >.university-logo img{
+        .studentInfo >.university-logo> input{
+            opacity: 0.1;
+            position: absolute;
+        }
+        .studentInfo >.university-logo>img{
             height:100%;
-            content: url(logo.jpg);;
+            z-index: 10;
+            /* content: url(logo.jpg);; */
         }
         .info-schoolGate{
             width: 100%;
@@ -181,7 +185,8 @@
                     <p class="text-color">{{studentInfo.Time}}<p>
                 </div>
                 <div class="university-logo">
-                    <img />
+                    <img id="image" src=""/>
+                    <input type="file" onchange="selectImage(this)" >
                 </div>
             </div>
             <!-- 进校信息 -->
@@ -225,6 +230,17 @@
         </div>
     </div>
     <script>
+        function selectImage(file) {
+                if (!file.files || !file.files[0]) {
+                    return;
+                }
+                var reader = new FileReader();
+                    reader.onload = function (evt) {
+                    document.getElementById('image').src = evt.target.result;
+                    image = evt.target.result;
+                }
+                reader.readAsDataURL(file.files[0]);
+        }
         new Vue({
           el: '#app',
           data: {
@@ -265,7 +281,8 @@
                     'Dept':  /数学与信息学院/,
                     'Time': `${moment().format('YYYY-MM-DD 23:59')}止`,
                 })
-              }
+              },
+              
           },
           created:function (){
                 // var pwd =prompt('请输入密码');
