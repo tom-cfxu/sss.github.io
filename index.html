@@ -162,63 +162,65 @@
     </style>
 </head>
 <body>
-    <div id="app" class="container" v-bind:class="{hidden:!isView}" >
-        <!-- 头部 -->
-        <div class="head">
-           <img/>
-        </div>
-        <!-- 学生信息 -->
-        <div class="studentInfo">
-            <div class="info">
-                <p>学生 / Name:</p>
-                <p class="text-color">{{studentInfo.Name}}<p>
-                <p>学号 / No:</p>
-                <p class="text-color">{{studentInfo.No}}<p>
-                <p>院系 / Dept:</p>
-                <p class="text-color">{{studentInfo.Dept}}<p>
-                <p>有效期 / Time:</p>
-                <p class="text-color">{{studentInfo.Time}}<p>
+    <div id="app"   >
+        <div class="container" v-bind:class="{hidden:!isView}">
+            <!-- 头部 -->
+            <div class="head">
+               <img/>
             </div>
-            <div class="university-logo">
-                <img />
+            <!-- 学生信息 -->
+            <div class="studentInfo">
+                <div class="info">
+                    <p>学生 / Name:</p>
+                    <p class="text-color">{{studentInfo.Name}}<p>
+                    <p>学号 / No:</p>
+                    <p class="text-color">{{studentInfo.No}}<p>
+                    <p>院系 / Dept:</p>
+                    <p class="text-color">{{studentInfo.Dept}}<p>
+                    <p>有效期 / Time:</p>
+                    <p class="text-color">{{studentInfo.Time}}<p>
+                </div>
+                <div class="university-logo">
+                    <img />
+                </div>
             </div>
-        </div>
-        <!-- 进校信息 -->
-        <div class="info-schoolGate">
-            <span>
-                旗山校区-南门-入方向
-            </span>
-        </div>
-        <!-- 时间 -->
-        <div class="time">
-            <div class="hour timebox"> <!-- 小时 -->
-                {{Hour}}
+            <!-- 进校信息 -->
+            <div class="info-schoolGate">
+                <span>
+                    旗山校区-南门-入方向
+                </span>
             </div>
-            
-            <div class="space">:</div><!-- 冒号 -->
-
-            <div class="minute timebox"> <!-- 分钟 -->
-                {{Minute}}
+            <!-- 时间 -->
+            <div class="time">
+                <div class="hour timebox"> <!-- 小时 -->
+                    {{Hour}}
+                </div>
+                
+                <div class="space">:</div><!-- 冒号 -->
+    
+                <div class="minute timebox"> <!-- 分钟 -->
+                    {{Minute}}
+                </div>
+                <div class="space">:</div><!-- 冒号 -->
+    
+                <div class="second timebox"> <!-- 秒 -->
+                    {{Second}}
+                </div>
+                <div class="space">:</div><!-- 冒号 -->
+                
+                <div class="millisecond timebox"> <!-- 毫秒 -->
+                    {{Millisecond}}
+                </div>
             </div>
-            <div class="space">:</div><!-- 冒号 -->
-
-            <div class="second timebox"> <!-- 秒 -->
-                {{Second}}
+            <!-- 分割线时间 -->
+            <div class="divider">
+                ——————{{Date}}——————
             </div>
-            <div class="space">:</div><!-- 冒号 -->
-            
-            <div class="millisecond timebox"> <!-- 毫秒 -->
-                {{Millisecond}}
-            </div>
-        </div>
-        <!-- 分割线时间 -->
-        <div class="divider">
-            ——————{{Date}}——————
-        </div>
-        <!-- 版权信息 -->
-        <div class="foot">
-            <div class="copyRight">
-                技术支持:福州校企邦网络科技有限公司
+            <!-- 版权信息 -->
+            <div class="foot">
+                <div class="copyRight">
+                    技术支持:福州校企邦网络科技有限公司
+                </div>
             </div>
         </div>
     </div>
@@ -269,7 +271,7 @@
                 var pwd =prompt('请输入密码');
                 if(pwd!='123'){
                     this.isView=false;
-                    // window.close();
+                    window.close();
                     wx.closeWindow();
                     return;
                 }
