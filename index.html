@@ -208,7 +208,7 @@
                 </div>
                 <div class="space">:</div><!-- 冒号 -->
                 
-                <div class="millisecond timebox"> <!-- 毫秒 -->
+                <div class="millisecond timebox" style="width: 4rem;"> <!-- 毫秒 -->
                     {{Millisecond}}
                 </div>
             </div>
@@ -285,7 +285,7 @@
                 this.Millisecond=this.getMillisecond();
                 setInterval(()=>{
                     this.Millisecond=this.getMillisecond();
-                },100)
+                },1)
                 setInterval(()=>{
                     this.Hour=this.getHour();
                     this.Minute=this.getMinute();
