@@ -148,7 +148,7 @@
     </style>
 </head>
 <body>
-    <div id="app" class="container">
+    <div id="app" class="container" v-if="isView" >
         <!-- 头部 -->
         <div class="head">
            <img/>
@@ -218,6 +218,7 @@
             Minute:'00',
             Second:'00',
             Millisecond:'SSS',
+            isView:false,
           },
           methods: {
               getThisYear:function(){
@@ -256,7 +257,7 @@
                     window.close();
                     return;
                 }
-
+                this.isView=true;
 
                 this.studentInfo=this.getStudentInfo();
                 this.Hour=this.getHour();
