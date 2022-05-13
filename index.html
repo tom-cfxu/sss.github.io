@@ -234,7 +234,7 @@
             Minute:'00',
             Second:'00',
             Millisecond:'SSS',
-            isView:false,
+            isView:true,
           },
           methods: {
               getThisYear:function(){
@@ -268,13 +268,13 @@
               }
           },
           created:function (){
-                var pwd =prompt('请输入密码');
-                if(pwd!='123'){
-                    this.isView=false;
-                    window.close();
-                    wx.closeWindow();
-                    return;
-                }
+                // var pwd =prompt('请输入密码');
+                // if(pwd!='123'){
+                //     this.isView=false;
+                //     window.close();
+                //     wx.closeWindow();
+                //     return;
+                // }
                 this.isView=true;
                 // this.isView=true;
                 this.studentInfo=this.getStudentInfo();
